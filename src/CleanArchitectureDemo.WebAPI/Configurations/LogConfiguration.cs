@@ -8,13 +8,6 @@ public static class LogConfiguration
     {
         if (services == null) throw new ArgumentNullException(nameof(services));
 
-        //var logPath = "./log/log-.txt";
-
-        //var logger = new LoggerConfiguration()
-        //    .WriteTo.Console()
-        //    .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
-        //    .CreateLogger();
-
         var logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.FromLogContext()
