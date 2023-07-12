@@ -1,5 +1,4 @@
-﻿using CleanArchitectureDemo.Application.Common.LogService;
-using CleanArchitectureDemo.Shared;
+﻿using CleanArchitectureDemo.Shared;
 using FluentValidation;
 using Newtonsoft.Json;
 using System.Net;
@@ -9,12 +8,13 @@ namespace CleanArchitectureDemo.WebAPI.Middleware;
 internal sealed class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate next;
-    
-    private static readonly LogService _log = LogService.Instance;
 
-    public ExceptionHandlingMiddleware(RequestDelegate next)
+    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+
+    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
     {
         this.next = next;
+        _logger = logger;
     }
 
     public async Task Invoke(HttpContext context)
@@ -29,11 +29,13 @@ internal sealed class ExceptionHandlingMiddleware
         }
     }
 
-    private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         var result = string.Empty;
 
         context.Response.ContentType = "application/json";
+
+        _logger.LogDebug("Test");
 
         if (exception.GetType() == typeof(ValidationException))
         {
@@ -49,7 +51,7 @@ internal sealed class ExceptionHandlingMiddleware
 
             context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
 
-            _log.GenerateInfoLog(result);
+            _logger.LogInformation(result);
         }
         else
         {
@@ -60,7 +62,7 @@ internal sealed class ExceptionHandlingMiddleware
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            _log.GenerateErrorLog(exception.Message, exception);
+            _logger.LogError(result);
         }
 
         return context.Response.WriteAsync(result);

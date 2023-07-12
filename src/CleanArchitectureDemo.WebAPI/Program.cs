@@ -1,10 +1,8 @@
 using CleanArchitectureDemo.WebAPI.Configurations;
-using log4net.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
-XmlConfigurator.Configure(new FileInfo("log4net.config"));
-
+builder.Services.AddLog(builder);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddGeneralConfiguration(builder.Configuration);

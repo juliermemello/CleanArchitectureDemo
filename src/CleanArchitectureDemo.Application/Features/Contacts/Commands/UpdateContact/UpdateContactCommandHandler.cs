@@ -25,6 +25,9 @@ internal class UpdateContactCommandHandler : IRequestHandler<UpdateContactComman
         {
             contact = _mapper.Map<Contact>(command);
 
+            contact.UpdatedBy = 0;
+            contact.UpdatedDate = DateTime.Now;
+
             await _unitOfWork.Repository<Contact>().UpdateAsync(contact);
 
             contact.AddDomainEvent(new ContactUpdatedEvent(contact));
