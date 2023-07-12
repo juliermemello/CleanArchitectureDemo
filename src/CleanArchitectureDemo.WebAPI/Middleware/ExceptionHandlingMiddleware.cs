@@ -1,4 +1,4 @@
-﻿using CleanArchitectureDemo.Application.Common.Log;
+﻿using CleanArchitectureDemo.Application.Common.LogService;
 using CleanArchitectureDemo.Shared;
 using FluentValidation;
 using Newtonsoft.Json;
