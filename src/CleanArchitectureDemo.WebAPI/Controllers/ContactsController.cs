@@ -23,19 +23,34 @@ public class ContactsController : ApiControllerBase
     [HttpPost]
     public async Task<ActionResult<Result<Contact>>> Create(CreateContactCommand command)
     {
-        return await _mediator.Send(command);
+        var result = await _mediator.Send(command);
+
+        var notification = new CreateContactNotification { Id = result.Data.Id };
+        await _mediator.Publish(notification);
+
+        return Ok(result);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
     public async Task<ActionResult<Result<Contact>>> Update(UpdateContactCommand command)
     {
-        return await _mediator.Send(command);
+        var result = await _mediator.Send(command);
+
+        var notification = new UpdateContactNotification { Id = result.Data.Id };
+        await _mediator.Publish(notification);
+
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult<Result<Contact>>> Delete(int id)
     {
-        return await _mediator.Send(new DeleteContactCommand(id));
+        var result = await _mediator.Send(new DeleteContactCommand(id));
+
+        var notification = new DeleteContactNotification { Id = result.Data.Id };
+        await _mediator.Publish(notification);
+
+        return Ok(result);
     }
 
     [HttpGet]

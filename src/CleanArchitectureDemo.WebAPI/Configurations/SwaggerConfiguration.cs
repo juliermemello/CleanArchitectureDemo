@@ -23,7 +23,7 @@ public static class SwaggerConfiguration
                 License = new OpenApiLicense
                 {
                     Name = "MIT",
-                    Url = new Uri("https://github.com/juliermemello/contas/blob/master/LICENSE")
+                    Url = new Uri("https://github.com/juliermemello/CleanArchitectureDemo/blob/master/LICENSE")
                 }
             });
         });

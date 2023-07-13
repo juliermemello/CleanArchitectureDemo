@@ -1,4 +1,5 @@
 ﻿using CleanArchitectureDemo.Application.Common.Validator;
+using CleanArchitectureDemo.Application.Features.Contacts.Commands.CreateContact;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,8 @@ public static class DefaultCoreModule
     private static void AddMediator(this IServiceCollection services)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.AddScoped<INotificationHandler<CreateContactNotification>, CreateContactNotificationHandler>();
     }
 
     private static void AddValidators(this IServiceCollection services)
