@@ -26,7 +26,10 @@ public static class DefaultCoreModule
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-        services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
+        services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
+        {
+            options.UseSqlite(connectionString);
+        });
     }
 
     private static void AddRepositories(this IServiceCollection services)

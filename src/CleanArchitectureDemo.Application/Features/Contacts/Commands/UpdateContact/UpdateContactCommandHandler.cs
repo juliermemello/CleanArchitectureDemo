@@ -23,18 +23,20 @@ internal class UpdateContactCommandHandler : IRequestHandler<UpdateContactComman
 
         if (contact != null)
         {
-            contact = _mapper.Map<Contact>(command);
+            var contactUpdate = _mapper.Map<Contact>(command);
 
-            contact.UpdatedBy = 0;
-            contact.UpdatedDate = DateTime.Now;
+            contactUpdate.CreatedBy = contact.CreatedBy;
+            contactUpdate.CreatedDate = contact.CreatedDate;
+            contactUpdate.UpdatedBy = 0;
+            contactUpdate.UpdatedDate = DateTime.UtcNow;
 
-            await _unitOfWork.Repository<Contact>().UpdateAsync(contact);
+            await _unitOfWork.Repository<Contact>().UpdateAsync(contactUpdate);
 
-            contact.AddDomainEvent(new ContactUpdatedEvent(contact));
+            contact.AddDomainEvent(new ContactUpdatedEvent(contactUpdate));
 
             await _unitOfWork.Save(cancellationToken);
 
-            return await Result<Contact>.SuccessAsync(contact, "Contact Updated");
+            return await Result<Contact>.SuccessAsync(contactUpdate, "Contact Updated");
         }
 
         return await Result<Contact>.FailureAsync("Contact Not Found");

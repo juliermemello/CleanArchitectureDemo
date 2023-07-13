@@ -22,9 +22,7 @@ internal class CreateContactCommandHandler : IRequestHandler<CreateContactComman
         var contact = _mapper.Map<Contact>(request);
 
         contact.CreatedBy = 0;
-        contact.CreatedDate = DateTime.Now;
-        contact.UpdatedBy = 0;
-        contact.UpdatedDate = DateTime.Now;
+        contact.CreatedDate = DateTime.UtcNow;
 
         await _unitOfWork.Repository<Contact>().AddAsync(contact);
 
