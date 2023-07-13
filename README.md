@@ -19,3 +19,20 @@ This layer contains the implementation of the interfaces defined in the Applicat
 ### Presentation Layer
 
 This layer is responsible for presenting some user interface and handling user interaction with the system. It includes the views, controllers, and other web components.
+
+## Setting Up Clean Architecture Project
+
+To this study, we will use the concept of a contact agenda, something simple and easy to represent the necessary techniques to achieve the desired objectives.
+
+For this study, we will use MS Visual Studio 2022 and it will have the following structure:
+
+- Core
+-- CleanArchitectureDemo.Application
+-- CleanArchitectureDemo.Domain
+- Infrastructure
+-- CleanArchitectureDemo.Infrastructure
+-- CleanArchitectureDemo.Persistence
+- Presentation
+-- CleanArchitectureDemo.WebAPI
+- Shared
+-- CleanArchitectureDemo.Shared
