@@ -27,12 +27,20 @@ To this study, we will use the concept of a contact agenda, something simple and
 For this study, we will use MS Visual Studio 2022 and it will have the following structure:
 
 - Core
--- CleanArchitectureDemo.Application
--- CleanArchitectureDemo.Domain
+  - CleanArchitectureDemo.Application
+  - CleanArchitectureDemo.Domain
 - Infrastructure
--- CleanArchitectureDemo.Infrastructure
--- CleanArchitectureDemo.Persistence
+  - CleanArchitectureDemo.Infrastructure
+  - CleanArchitectureDemo.Persistence
 - Presentation
--- CleanArchitectureDemo.WebAPI
+  - CleanArchitectureDemo.WebAPI
 - Shared
--- CleanArchitectureDemo.Shared
+  - CleanArchitectureDemo.Shared
+
+## License
+
+[MIT](https://github.com/juliermemello/CleanArchitectureDemo/blob/master/LICENSE)
+
+## Feedback
+
+If you have any feedback, please reach out to us at juliermemello@gmail.com
