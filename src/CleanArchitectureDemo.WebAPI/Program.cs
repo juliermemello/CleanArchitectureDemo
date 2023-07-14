@@ -19,5 +19,7 @@ if (app.Environment.IsDevelopment())
 app.AddAPICors();
 app.AddSwagger();
 app.AddMiddleware();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

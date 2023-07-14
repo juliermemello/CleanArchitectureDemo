@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CleanArchitectureDemo.Application\CleanArchitectureDemo.Application.csproj" />
+    <ProjectReference Include="..\CleanArchitectureDemo.Persistence\CleanArchitectureDemo.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

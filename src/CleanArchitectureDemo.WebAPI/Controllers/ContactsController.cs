@@ -7,10 +7,12 @@ using CleanArchitectureDemo.Application.Features.Contacts.Queries.GetContactsWit
 using CleanArchitectureDemo.Domain.Entities;
 using CleanArchitectureDemo.Shared;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitectureDemo.WebAPI.Controllers;
 
+[Authorize]
 public class ContactsController : ApiControllerBase
 {
     private readonly IMediator _mediator;

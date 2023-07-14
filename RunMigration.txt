@@ -1,1 +1,5 @@
 Add-Migration InitialMigration -StartupProject CleanArchitectureDemo.WebAPI -Context ApplicationDbContext -Project CleanArchitectureDemo.Persistence
+
+Update-Database
+
+Remove-Migration -Context ApplicationDbContext -Project CleanArchitectureDemo.Persistence

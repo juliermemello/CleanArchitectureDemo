@@ -1,12 +1,14 @@
 ﻿using CleanArchitectureDemo.Domain.Common;
 using CleanArchitectureDemo.Domain.Common.Interfaces;
 using CleanArchitectureDemo.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace CleanArchitectureDemo.Persistence.Contexts;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IDomainEventDispatcher _dispatcher;
     

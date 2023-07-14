@@ -11,7 +11,7 @@ public static class GeneralConfiguration
         if (services == null) throw new ArgumentNullException(nameof(services));
 
         services.AddApplicationLayer();
-        services.AddInfrastructureLayer();
         services.AddPersistenceLayer(configuration);
+        services.AddInfrastructureLayer(configuration);
     }
 }

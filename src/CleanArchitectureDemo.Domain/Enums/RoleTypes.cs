@@ -1,8 +1,7 @@
 ﻿namespace CleanArchitectureDemo.Domain.Enums;
 
-public enum LogType
+public enum RoleTypes
 {
-    Info,
-    Error,
-    Fatal
+    User,
+    Admin
 }
